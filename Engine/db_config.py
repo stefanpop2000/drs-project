@@ -4,7 +4,7 @@ from flask import Flask
 from flask_marshmallow import Marshmallow
 
 db = SQLAlchemy()
-DB_NAME = "shareddb-z.hosting.stackcp.net"
+DB_NAME = "drs-project-313635ceea"
 mysql = MySQL()
 ma = Marshmallow()
 
