@@ -5,7 +5,7 @@ $(document).ready(function () {
         let email = $('#email').val();
         let password = $('#password').val()
 
-        $.post('http://127.0.0.1:5001/login', $('form').serialize(),
+        $.post('https://drs-project-back.onrender.com/login', $('form').serialize(),
                         function (data, status) {
                             if (data) {
                                 alert("Korisnik uspesno prijavljen na sistem!")

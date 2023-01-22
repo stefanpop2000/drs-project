@@ -5,7 +5,7 @@ $(document).on('click', '#buycrypto', function() {
     var element =  $(this).closest('tr').find("td:eq(3) input[type='text']");
 
     $.ajax({
-        url: 'http://127.0.0.1:5001/buycrypto',
+        url: 'https://drs-project-back.onrender.com/buycrypto',
         type: 'POST',
         data: {
             'amount': amount,
@@ -25,7 +25,7 @@ $(document).on('click', '#buycrypto', function() {
 
 $(document).ready(function () {
     $.ajax({
-        url: 'http://127.0.0.1:5001/cryptolist',
+        url: 'https://drs-project-back.onrender.com/cryptolist',
         type: 'GET',
         success: function(response) {
             var cryptolist = "";

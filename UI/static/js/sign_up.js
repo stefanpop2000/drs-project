@@ -12,7 +12,7 @@ $(document).ready(function () {
 
 
 
-        $.post('http://127.0.0.1:5001/sign-up', $('form').serialize(),
+        $.post('https://drs-project-back.onrender.com/sign-up', $('form').serialize(),
                         function (data, status) {
                             if (JSON.stringify(data) === "true") {
                                 alert("Korisnik uspesno registrovan!")

@@ -6,7 +6,7 @@ $(document).ready(function () {
     }
 
     $.ajax({
-        url: 'http://127.0.0.1:5001/load-profile',
+        url: 'https://drs-project-back.onrender.com/load-profile',
         type: 'GET',
         data: {
             "id": sessionStorage.getItem('current_user_id')
@@ -57,7 +57,7 @@ $(document).ready(function () {
         let email = $('#email').val();
         let password = $('#password').val()
 
-        $.post('http://127.0.0.1:5001/update-profile', $('#edit').serialize(),
+        $.post('https://drs-project-back.onrender.com/update-profile', $('#edit').serialize(),
                         function (data, status) {
                             document.getElementById('userId').value = data.id;
                             document.getElementById('firstName').value = data.name;
@@ -73,7 +73,7 @@ $(document).ready(function () {
 
     $('#verification').submit(function(e){
         e.preventDefault();
-        $.post('http://127.0.0.1:5001/verify-account', $('#verification').serialize(),
+        $.post('https://drs-project-back.onrender.com/verify-account', $('#verification').serialize(),
                         function (data, status) {
                             if(data.cardNumber == "4244-4244-4244-4244"  && data.securityCode == "123" && data.expDate == "02/23"){
                                 alert("kartica verifikovana")
@@ -92,7 +92,7 @@ $(document).ready(function () {
     $('#btnDeposit').click(function () {
         money = $('#inputDeposit').val()
         if(money){
-            $.post('http://127.0.0.1:5001/deposit-money', {'money': money, 'id': sessionStorage.getItem('current_user_id')},
+            $.post('https://drs-project-back.onrender.com/deposit-money', {'money': money, 'id': sessionStorage.getItem('current_user_id')},
             function (data, status) {
                 document.getElementById('balance').value = JSON.stringify(data)
                 location.reload()
@@ -102,7 +102,7 @@ $(document).ready(function () {
     });
 
     $.ajax({
-        url: 'http://127.0.0.1:5001/accountCrypto',
+        url: 'https://drs-project-back.onrender.com/accountCrypto',
         type: 'GET',
         data: {
             'id': sessionStorage.getItem('current_user_id')
@@ -126,7 +126,7 @@ $(document).ready(function () {
     });
 
     $.ajax({
-        url:'http://127.0.0.1:5001/cryptolist',
+        url:'https://drs-project-back.onrender.com/cryptolist',
         type:'GET',
         data: {
             'id': sessionStorage.getItem('current_user_id')
@@ -148,7 +148,7 @@ $(document).ready(function () {
 
     function loadTransactions(){
         $.ajax({
-            url: 'http://127.0.0.1:5001/getMyTransactions',
+            url: 'https://drs-project-back.onrender.com/getMyTransactions',
             type: 'GET',
             data: {
                 'id': sessionStorage.getItem('current_user_id')
@@ -241,7 +241,7 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: 'http://127.0.0.1:5001/getSortMyTransactions',
+            url: 'https://drs-project-back.onrender.com/getSortMyTransactions',
             type: 'POST',
             data: {
                 'sortBy': sortBy,
@@ -344,7 +344,7 @@ $(document).ready(function () {
         }
         
         $.ajax({
-            url: 'http://127.0.0.1:5001/filterTransactions',
+            url: 'https://drs-project-back.onrender.com/filterTransactions',
             type: 'POST',
             data: {
                 'id': sessionStorage.getItem('current_user_id'),

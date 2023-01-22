@@ -5,7 +5,7 @@ $(document).ready(function () {
     }
 
     $.ajax({
-        url:'http://127.0.0.1:5001/getUserCryptos',
+        url:'https://drs-project-back.onrender.com/getUserCryptos',
         type:'GET',
         data: {
             'id': sessionStorage.getItem('current_user_id')
@@ -25,7 +25,7 @@ $(document).ready(function () {
         e.preventDefault(e);
 
         $.ajax({
-            url: 'http://127.0.0.1:5001/executeTransaction',
+            url: 'https://drs-project-back.onrender.com/executeTransaction',
             data: $('form').serialize() + "&id=" + sessionStorage.getItem('current_user_id'),
             type: 'POST',
             success: function(response) {

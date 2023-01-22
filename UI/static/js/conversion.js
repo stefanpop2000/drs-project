@@ -6,7 +6,7 @@ $(document).ready(function() {
     }
 
     $.ajax({
-        url:'http://127.0.0.1:5001/getUserCryptos',
+        url:'https://drs-project-back.onrender.com/getUserCryptos',
         type:'GET',
         data: {
             'id': sessionStorage.getItem('current_user_id')
@@ -28,7 +28,7 @@ $(document).ready(function() {
     var listAllCryptos;
 
     $.ajax({
-        url:'http://127.0.0.1:5001/cryptolist',
+        url:'https://drs-project-back.onrender.com/cryptolist',
         type:'GET',
         success: function(response) {
             listAllCryptos = response;
@@ -75,7 +75,7 @@ $(document).ready(function() {
         }
         console.log(myCrypto + ',' + allCryptos + ',' + inputConvertAmount + ',' + cryptoValue + ',' + myCryptoValue)
         $.ajax({
-            url:'http://127.0.0.1:5001/confirmConversion',
+            url:'https://drs-project-back.onrender.com/confirmConversion',
             type:'POST',
             data: {
                 'id': sessionStorage.getItem('current_user_id'),
