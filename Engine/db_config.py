@@ -13,8 +13,8 @@ app.config['SECRET_KEY'] = 'ioahdoah oaihdoah'
 app.config['MYSQL_DATABASE_USER'] = 'root-f35a'
 app.config['MYSQL_DATABASE_PASSWORD'] = 'Slatkamalasladakja123!'
 app.config['MYSQL_DATABASE_DB'] = DB_NAME
-app.config['MYSQL_DATABASE_HOST'] = 'mysql.gb.stackcp.com:52926'
-app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+mysqlconnector://root-f35a:Slatkamalasladakja123!@mysql.gb.stackcp.com:52926/{DB_NAME}'
+app.config['MYSQL_DATABASE_HOST'] = 'mysql.gb.stackcp.com:58732'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+mysqlconnector://root-f35a:Slatkamalasladakja123!@mysql.gb.stackcp.com:58732/{DB_NAME}'
 
 mysql.init_app(app)
 db = SQLAlchemy(app)
