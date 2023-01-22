@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title%}Home{% endblock%}
+{% block content %}
+    <br><br>
+    <div style="margin: auto;">
+        <table class="table table table-striped center" style="width: 50%; margin: auto;">
+            <tr class="table">
+                <th style="text-align: center;" class="table-info">Your crypto</th>
+                <td class="table-info">
+                    <select id="myCrypto" name="myCrypto">
+                        
+                    </select>
+                </td>
+            </tr>
+            <tr class="table">
+                <th style="text-align: center;" class="table-info">Convert to</th>
+                <td class="table-info">
+                    <select id="allCryptos" name="allCryptos">
+    
+                    </select>
+                </td>
+            </tr>
+            <tr class="table">
+                <th style="text-align: center;" class="table-info">Amount</th>
+                <td class="table-info"><input type="number" id="inputConvertAmount" name="inputConvertAmount" style="width: 80px;" /></td>
+            </tr>
+            <tr class="table">
+                <td  class="table-info" colspan="2">
+                    <button style="margin-left: 50%;" id="buttonConfirmConversion" class="btn btn-success" style="float: left;">Confirm conversion</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}
+
+{% block script%}
+<script type="text/javascript" src="{{ url_for('static', filename='js/conversion.js') }}"></script>
+{% endblock %}

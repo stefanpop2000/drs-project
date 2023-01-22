@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "*"
+flask-sqlalchemy = "==2.5.1"
+flask-login = "*"
+requests = "*"
+flask-cors = "*"
+mysql-connector-python = "*"
+flask-mysql = "*"
+flask-marshmallow = "*"
+docker = "*"
+docker-compose = "*"
+flask-socketio = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"

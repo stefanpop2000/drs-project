@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title%}Home{% endblock%}
+{% block content %}
+    <br>
+    <table  class="table"> 
+      <thead>
+        <th>Name</th>
+        <th>Price</th>
+        <th>24h change(%)</th>
+        <th>Amount</th>
+        <th>Buy</th>
+      </thead>
+      <tbody id="cryptotable">
+
+      </tbody>
+    </table>
+{% endblock %}
+
+{% block script%}
+<script type="text/javascript" src="{{ url_for('static', filename='js/crypto.js') }}"></script>
+{% endblock %}

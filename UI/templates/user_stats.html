@@ -1,0 +1,221 @@
+{% extends 'base.html' %}
+
+{% block title%}User data{% endblock%}
+{% block content %}
+<div class="row">
+    <form method="POST" class="float-left" id="edit">
+        <h1>User data</h1>
+        <input type="text" class="form-control" id="userId" name="userId" hidden>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for = "firstName">First Name</label>
+                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name">
+            </div>
+            <div class="form-group col-md-5">
+                <label for = "lastName">Last Name</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter last name">
+            </div>
+        </div>
+        <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for = "address">Address</label>
+                    <input type="text" class="form-control" id="address" name="address" placeholder="Enter address">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for = "city">City</label>
+                    <input type="text" class="form-control" id="city" name="city" placeholder="Enter city">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for = "country">Country</label>
+                    <input type="text" class="form-control" id="country" name="country" placeholder="Enter country">
+                </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-9">
+                <label for = "phoneNum">Phone number</label>
+                <input type="text" class="form-control" id="phoneNum" name="phoneNum" placeholder="Enter phone number">
+            </div>
+        </div>
+        <div class="form-row align-items-left mb-2">
+            <div class="form-group col-md-5">
+                <label for="email">Email Address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email"></div>
+            <div class="form-group col-md-4">
+                <label for = "password1">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Change password">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-9">
+                <label for = "balance">Balance on online account</label>
+                <input type="number" class="form-control" id="balance" name="balance" readonly>
+            </div>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Edit"/>
+    </form>
+    <form method="POST" class="float-left" id="verification">
+        <h1>Credit card data</h1>
+        <input type="text" class="form-control" id="userIdCard" name="userIdCard" hidden>
+        <div class="form-group mb-3">
+            <label for = "user">Card's user</label>
+            <input type="text" class="form-control" id="user" name="user" readonly>
+        </div>
+        <div class="form-group mb-3">
+            <label for = "cardNumber">Card number</label>
+            <input type="text" class="form-control" id="cardNumber" name="cardNumber" 
+            placeholder="Enter card number"pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" 
+            oninvalid="this.setCustomValidity('Format of card number: xxxx-xxxx-xxxx-xxxx')"
+            oninput="this.setCustomValidity('')" required> 
+        </div>
+        
+        <div class="form-group mb-3">
+            <label for = "address">Expiry date</label>
+            <input type="text" class="form-control" id="expDate" name="expDate" 
+            placeholder="Enter expiry date" pattern="[0-9]{2}/[0-9]{2}" 
+            oninvalid="this.setCustomValidity('Format of date: mm/yy')"
+            oninput="this.setCustomValidity('')" required> 
+        </div>
+        
+        <div class="form-group mb-3">
+            <label for = "country">Safety code</label>
+            <input type="text" class="form-control" id="code" name="code"  pattern="[0-9]{3}" 
+            placeholder="Enter safety code"  oninvalid="this.setCustomValidity('Format of code: xxx')"
+            oninput="this.setCustomValidity('')" required>
+        </div>    
+        <input type="submit" class="btn btn-primary" id="btnVerify" value="Verify"/>
+        <button type="button" class="btn btn-primary" id="depositBtn" data-toggle="modal" data-target="#exampleModal">
+            Deposit
+        </button>
+    </form>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Adding money to account</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-icon">
+                    <input type="number" id="inputDeposit">
+                    <i>$</i>
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="btnDeposit" data-toggle="modal" data-target="#exampleModal" data-dismiss="modal">Save</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<br><br><br>
+<div class="row">
+<h3>Wallet</h3>
+<table  class="table"> 
+    <thead>
+        <th>Name</th>
+        <th>Count</th>
+    </thead>
+    <tbody id="cryptotable">
+
+    </tbody>
+    </table>  
+</div>
+<br><br><br>
+<div class="row">
+    <div style="overflow-x:auto;">
+        <table id="tableTransactions" class="table table table-striped" style="margin-bottom: 0%;">
+            <div id="divSort">
+                <tr id="trSort">
+                  <td colspan="4"> 
+                    <label for="sortBy">Sort by:</label>
+                    <select name="sortBy" id="sortBy">
+                      <option value="Amount">Amount</option>
+                      <option value="Price">Price</option>
+                      <option value="Total">Total</option>
+                      <option value="Date">Date</option>
+                    </select> 
+                  </td>
+                  <td colspan="4">
+                    <label for="sortAscDesc">Asc/Desc</label>
+                    <select name="sortAscDesc" id="sortAscDesc">
+                      <option value="Ascending">Ascending</option>
+                      <option value="Descending">Descending</option>
+                    </select> 
+                  </td>
+                  <td>
+                    <button id="buttonSortTransactions" class="btn btn-light">Sort</button>
+                  </td>
+                </tr>
+            </div>
+            <div id="divFilter">
+              <tr id="trFilter">
+                <td> 
+                  <label for="filterCrypto">Crypto</label>
+                  <select id="filterCrypto" name="filterCrypto">
+    
+                  </select>
+                </td>
+                <td>
+                  <label for="filterAmountFrom">Amount from</label>
+                  <input type="number" id="filterAmountFrom" name="filterAmountFrom" />
+                  <br/>
+                  <label for="filterAmountTo">Amount to</label>
+                  <input type="number" id="filterAmountTo" name="filterAmountTo" />
+                </td>
+                <td>
+                  <label for="filterPriceFrom">Price from</label>
+                  <input type="number" id="filterPriceFrom" name="filterPriceFrom" />
+                  <br/>
+                  <label for="filterPriceTo">Price to</label>
+                  <input type="number" id="filterPriceTo" name="filterPriceTo" />
+                </td>
+                <td>
+                  <label for="filterTotalFrom">Total from</label>
+                  <input type="number" id="filterTotalFrom" name="filterTotalFrom" />
+                  <br/>
+                  <label for="filterTotalTo">Total to</label>
+                  <input type="number" id="filterTotalTo" name="filterTotalTo" />
+                </td>
+                <td>
+                  <label for="filterSender">Sender</label>
+                  <input type="text" id="filterSender" name="filterSender" />
+                </td>
+                <td>
+                  <label for="filterReceiver">Receiver</label>
+                  <input type="text" id="filterReceiver" name="filterReceiver" />
+                </td>
+                <td>
+                  <label for="filterDateFrom">Date from</label>
+                  <input type="date" id="filterDateFrom" name="filterDateFrom"/>
+                  <br/>
+                  <label for="filterDateTo">Date to</label>
+                  <input type="date" id="filterDateTo" name="filterDateTo" />
+                </td>
+                <td>
+                  <label for="filterStatus">Status</label>
+                  <select id="filterStatus" name="filterStatus">
+                    <option value=""></option>
+                    <option value="SUCCESS">Approved</option>
+                    <option value="REJECTED">Rejected</option>
+                    <option value="PROCESSING">Processing</option>
+                  </select>
+                </td>
+                <td>
+                  <button style="margin-top: 10px;" id="buttonFilterTransactions" class="btn btn-light">Filter</button>
+                </td>
+              </tr>
+          </div>
+    
+        </table>
+        </div>
+        <table id="tableContent" class="table table table-striped">
+
+        </table>
+{% endblock %}
+
+{% block script%}
+<script type="text/javascript" src="{{ url_for('static', filename='js/user_stats.js') }}"></script>
+{% endblock %}

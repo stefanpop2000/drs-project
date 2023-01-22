@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title%}User data{% endblock%}
+{% block content %}
+    <div id="newTransationDiv" class="w-50 p-3" style="display: inline-block; margin-left: 25%;">
+        <form id="transform">
+            <table id="tableProfile" class="table table table-striped">
+                <tr class="table">
+                    <th colspan="2" style="text-align: center;" class="table-info">New transaction</th>
+                </tr>
+                <tr class="table" style="text-align: center;">
+                    <th class="table-info">Receiver email</th>
+                    <td class="table-info">
+                         <input type="text" name="receiveremail" id="idReceiverEmail"/>
+                    </td>
+                </tr>
+                <tr class="table" style="text-align: center;">
+                    <th class="table-info">Crypto</th>
+                    <td class="table-info">
+                        <select id="cryptos" name="crypto">
+                            
+                        </select>
+                    </td>
+                </tr>
+                <tr class="table" style="text-align: center;">
+                    <th class="table-info">Value</th>
+                    <td class="table-info">
+                        <input type="text" name="value" id="idValue">
+                    </td>
+                </tr>
+                <tr class="table-info">
+                    <th colspan="2" style="text-align: center;" class="table-info">
+                        <input type="submit" value="Execute transaction" class="btn btn-outline-primary"/>
+                    </th>
+                </tr>
+            </table>
+        </form>
+    </div>
+{% endblock %}
+{% block script%}
+<script type="text/javascript" src="{{ url_for('static', filename='js/send.js') }}"></script>
+{% endblock %}
